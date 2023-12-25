@@ -261,6 +261,11 @@ self: super: {
   ghc-datasize = disableLibraryProfiling super.ghc-datasize;
   ghc-vis = disableLibraryProfiling super.ghc-vis;
 
+  # The test suite is failing with some ambiguous type error and it can't be
+  # reproduced upstream, so can try removing after a release of version greater
+  # than 1.2.1 is available.
+  universe-some = dontCheck super.universe-some;
+
   # Fixes compilation for basement on i686 for GHC >= 9.4
   # https://github.com/haskell-foundation/foundation/pull/573
   # Patch would not work for GHC >= 9.2 where it breaks compilation on x86_64
